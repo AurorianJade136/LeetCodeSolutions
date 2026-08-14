@@ -1,0 +1,26 @@
+class Solution(object):
+    def longestPalindrome(self, s):
+        def exp(left, right):
+            while left >= 0 and right < len(s) and s[right] == s[left]:
+                left -= 1
+                right +=1
+            return left +1, right -1
+        start, end = 0, 0
+        for i in range(len(s)):
+            l1, r1 = exp(i, i)
+            if r1 - l1 > end - start:
+                start, end = l1, r1
+            l2, r2 = exp(i, i + 1)
+            if r2 - l2 > end - start:
+                start, end = l2, r2
+        return s[start:end+1]
+        
+
+
+
+                
+                    
+            
+
+
+        
